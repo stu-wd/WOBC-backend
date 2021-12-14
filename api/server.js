@@ -1,11 +1,13 @@
 const express = require('express');
-
 const server = express();
+server.use(express.json());
+
+const UsersRouter = require('./routes/users.router');
+server.use('/api/users', UsersRouter);
 
 server.get('/', (req, res) => {
-    res.send(`
-    <h1>Server is up and going</h1>`)
-})
+    res.send(`<h1>Server is up and going</h1>`);
+});
 
 server.use('*', (err, req, res, next) => {
     res.status(err.status || 500).json({
