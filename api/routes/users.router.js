@@ -1,7 +1,7 @@
-const router = require('express').Router();
+const userRouter = require('express').Router();
 const Users = require('../../data/models/users.model')
 
-router.get('/', (req, res, next) => {
+userRouter.get('/', (req, res, next) => {
     Users.getAll()
         .then(users => {
             res.status(200).json(users)
@@ -9,4 +9,4 @@ router.get('/', (req, res, next) => {
         .catch(err => next(err))
 });
 
-module.exports = router;
+module.exports = userRouter;

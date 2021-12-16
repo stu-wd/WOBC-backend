@@ -5,6 +5,9 @@ server.use(express.json());
 const UsersRouter = require('./routes/users.router');
 server.use('/api/users', UsersRouter);
 
+const AuthRouter = require('./routes/auth.router');
+server.use('/api/auth', AuthRouter);
+
 server.get('/', (req, res) => {
     res.send(`<h1>Server is up and going</h1>`);
 });
