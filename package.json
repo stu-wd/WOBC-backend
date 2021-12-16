@@ -25,6 +25,7 @@
     "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
     "make": "knex migrate:make",
+    "makeseed": "knex seed:make",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "restart": "npm run rollback && npm run migrate && npm run seed",

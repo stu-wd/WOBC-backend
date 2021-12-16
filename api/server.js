@@ -8,6 +8,9 @@ server.use('/api/users', UsersRouter);
 const AuthRouter = require('./routes/auth.router');
 server.use('/api/auth', AuthRouter);
 
+const DonationsRouter = require('./routes/donations.router');
+server.use('/api/donations', DonationsRouter);
+
 server.get('/', (req, res) => {
     res.send(`<h1>Server is up and going</h1>`);
 });
