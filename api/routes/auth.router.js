@@ -1,5 +1,5 @@
 const authRouter = require('express').Router();
-const Auth = require('../../data/models/Auth.model');
+const Auth = require('../../data/models/auth.model');
 const generators = require('../../utils/generators');
 const mw = require('../middleware/auth.mw')
 
