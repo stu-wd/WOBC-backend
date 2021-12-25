@@ -1,7 +1,7 @@
 exports.seed = function(knex) {
-  return knex('donations').del()
+  return knex('Bikes').del()
     .then(function () {
-      return knex('donations').insert([
+      return knex('Bikes').insert([
         {
           serial: 'TEST1',
           future: 'Repair',
@@ -30,45 +30,45 @@ exports.seed = function(knex) {
         },
         {
           serial: 'TEST3',
-          future: 'Scrap',
-          condition: 'Poor',
-          type: 'Hybrid',
-          size: '24',
-          brand: 'Schwinn',
+          future: 'Donate',
+          condition: 'Perfect',
+          type: 'Road',
+          size: '26',
+          brand: 'Raleigh',
           gender: 'F',
           kidadult: 'Adult',
-          received: 'Becaffeinated',
-          storage: 'Lookouts'
+          received: 'East Ridge',
+          storage: 'Red Bank'
         },
         {
           serial: 'TEST4',
           future: 'Scrap',
           condition: 'Poor',
-          type: 'Hybrid',
-          size: '24',
-          brand: 'Schwinn',
+          type: 'Road',
+          size: '26',
+          brand: 'Specialized',
           gender: 'F',
           kidadult: 'Adult',
-          received: 'Becaffeinated',
-          storage: 'Lookouts'
+          received: 'Pedego',
+          storage: 'Dodds'
         },
         {
           serial: 'TEST5',
-          future: 'Scrap',
-          condition: 'Poor',
-          type: 'Hybrid',
-          size: '24',
-          brand: 'Schwinn',
-          gender: 'F',
+          future: 'Repair',
+          condition: 'Fair',
+          type: 'Mountain',
+          size: '29',
+          brand: 'Cannondale',
+          gender: 'M',
           kidadult: 'Adult',
-          received: 'Becaffeinated',
-          storage: 'Lookouts'
+          received: 'Hamilton Co. Recyclying',
+          storage: 'Red Bank'
         },
         {
           serial: 'TEST6',
-          future: 'Scrap',
-          condition: 'Poor',
-          type: 'Hybrid',
+          future: 'Donate',
+          condition: 'Perfect',
+          type: 'Mountain',
           size: '24',
           brand: 'Schwinn',
           gender: 'F',

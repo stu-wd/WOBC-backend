@@ -1,6 +1,6 @@
 exports.up = async (knex) => {
     await knex.schema
-        .createTable('donations', table => {
+        .createTable('Bikes', table => {
             table.increments()
             table.string('serial')
             table.string('future')
@@ -23,5 +23,5 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-    await knex.schema.dropTableIfExists('donations');
+    await knex.schema.dropTableIfExists('Bikes');
 };
