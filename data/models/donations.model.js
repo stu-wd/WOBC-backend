@@ -4,8 +4,8 @@ const getBikes = () => {
     return db('donations')
 };
 
-const findBy = (filter) => {
-    return db('donations').where(filter)
+const findBy = async (filter) => {
+    return await db('donations').where(filter)
 }
 
 module.exports = {
