@@ -5,7 +5,9 @@ const getBikes = () => {
 };
 
 const findBy = async (filter) => {
-    return await db('donations').where(filter)
+    const result = await db('donations').where(filter)
+    if (result.length === 0) return 'Got nothin\' for ya'
+    else return result
 }
 
 module.exports = {
