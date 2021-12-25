@@ -1,15 +1,12 @@
 const Users = require('../../data/models/users.model');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 const validateBody = async (req, res, next) => {
     try {
         const { name, password, username } = req.body;
         if (!name || !password || !username) {
             next({ status: 400, message: 'Missing name, password, or username'})
-        } else {
-            next()
-        }
+        } else next()
     } catch (err) {
         next({ status: 422, message: 'Error in req.body' })
     }
@@ -49,7 +46,6 @@ const checksPassword = async (req, res, next) => {
         .then(returnedUser => {
             if (returnedUser && bcrypt.compareSync(password, returnedUser.password)) {
                 req.body = returnedUser
-                // console.log(returnedUser)
                 next()
             } else {
                 next({ status: 401, message: 'Wrong password' })
