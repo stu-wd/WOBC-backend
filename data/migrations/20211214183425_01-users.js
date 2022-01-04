@@ -5,6 +5,7 @@ exports.up = async (knex) => {
         table.string('username').notNullable().unique()
         table.string('name').notNullable()
         table.string('password').notNullable()
+        table.datetime('created_at', { precision: 6 }).defaultTo(knex.fn.now(6))
     });
 };
 

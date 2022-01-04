@@ -1,11 +1,11 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const password = data => {
+const password = (data) => {
     return bcrypt.hashSync(data, parseInt(process.env.BCRYPT_ROUNDS) || 8);
 }
 
-const token = user => {
+const token = (user) => {
     const payload = {
         subject: user.user_id,
         username: user.username,

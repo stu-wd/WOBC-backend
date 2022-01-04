@@ -2,6 +2,11 @@ const express = require('express');
 const server = express();
 server.use(express.json());
 
+const cors = require('cors');
+server.use(cors({
+    origin: '*'
+}))
+
 const UsersRouter = require('./routes/users.router');
 server.use('/api/users', UsersRouter);
 

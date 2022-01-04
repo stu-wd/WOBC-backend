@@ -12,13 +12,13 @@ exports.up = async (knex) => {
             table.string('kidadult')
             table.string('received')
             table.string('storage')
-            table.string('date') // revisit
             table.integer('user_id')
                 table.foreign('user_id')
                     .references('user_id')
                     .inTable('users')
                     .onUpdate('NO ACTION')
                     .onDelete('NO ACTION')
+            table.datetime('created_at', { precision: 6 }).defaultTo(knex.fn.now(6))
         })
 };
 
