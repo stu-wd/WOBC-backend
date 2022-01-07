@@ -16,8 +16,13 @@ const addBike = async (bike) => {
     return db('Bikes').insert(bike).returning('*')
 }
 
+const editBike = async (serial, changes) => {
+    return db('Bikes').where('serial', serial).update(changes).returning('*')
+}
+
 module.exports = {
     getBikes,
     findBy,
-    addBike
+    addBike,
+    editBike
 }
