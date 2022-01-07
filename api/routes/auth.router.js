@@ -20,7 +20,6 @@ authRouter.post('/register', mw.validateBody, mw.usernameFree, (req, res, next) 
 });
 
 authRouter.post('/login', mw.usernameExists, mw.checksPassword, (req, res) => {
-    console.log(req.body)
     const { user_id, username } = req.body;
     const token = generators.token(req.body);
     res.status(200).json({

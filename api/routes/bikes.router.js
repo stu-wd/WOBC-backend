@@ -10,7 +10,7 @@ bikesRouters.get('/', (req, res, next) => {
         .catch(next)
 })
 
-bikesRouters.post('/filter', (req, res, next) => {
+bikesRouters.get('/filter', (req, res, next) => {
     Bikes.findBy(req.body)
         .then(results => {
             res.status(200).json(results)
