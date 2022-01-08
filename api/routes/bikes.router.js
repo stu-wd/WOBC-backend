@@ -18,6 +18,15 @@ bikesRouter.get('/filter', (req, res, next) => {
         .catch(next)
 });
 
+bikesRouter.get('/:serial', (req, res, next) => {
+    const serial = req.params
+    Bikes.findBy(serial)
+        .then(results => {
+            res.status(200).json(results)
+        })
+        .catch(next)
+})
+
 bikesRouter.post('/add', mw.validateBody, (req, res, next) => {
     Bikes.addBike(req.body)
         .then(newBike => {

@@ -6,10 +6,7 @@ const getBikes = () => {
 
 const findBy = (filter) => {
     const result = db('Bikes').where(filter)
-    console.log(result)
-    if (result.length === 0) {
-        return 'Got nothin\' for ya'
-    } else return result
+    return result
 }
 
 const addBike = async (bike) => {
