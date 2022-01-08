@@ -10,15 +10,15 @@ bikesRouter.get('/', (req, res, next) => {
         .catch(next)
 })
 
-// bikesRouter.get('/filter/:options', (req, res, next) => {
-//     const options = req.params
-//     console.log(options)
-//     // Bikes.findBy(req.body)
-//     //     .then(results => {
-//     //         res.status(200).json(results)
-//     //     })
-//     //     .catch(next)
-// });
+bikesRouter.get('/filter', (req, res, next) => {
+    // const options = req.params
+    // console.log(req.body)
+    Bikes.findBy(req.body)
+        .then(results => {
+            res.status(200).json(results)
+        })
+        .catch(next)
+});
 
 bikesRouter.get('/:serial', (req, res, next) => {
     const serial= req.params
