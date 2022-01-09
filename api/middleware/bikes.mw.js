@@ -9,14 +9,13 @@ const validateBody = async (req, res, next) => {
     } catch (err) {
         next({ status: 422, message: 'Error in the req.body' });
     };
-    console.log('validate')
 };
 
 const serialFree = async (req, res, next) => {
     const { serial } = req.body;
     try {
         const checkSerial = await Bikes.findBy({ serial });
-        if (!checkSerial) {
+        if (!checkSerial.serial) {
             next()
         } else {
             next({ status: 422, message: 'Serial is taken' });
