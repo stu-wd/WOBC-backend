@@ -6,13 +6,11 @@ exports.seed = function(knex) {
       return knex('users').insert([
         {
           username: 'admin',
-          name: 'Admin',
-          password: generators.password('admin')
+          password: generators.password(process.env.ADMIN_PW)
         },
         {
-          username: 'bpierce',
-          name: 'Blake Pierce',
-          password: generators.password('Rhino')
+          username: 'blake',
+          password: generators.password(process.env.BLAKE_PW)
         }
       ]);
     });

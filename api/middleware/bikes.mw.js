@@ -11,6 +11,21 @@ const validateBody = async (req, res, next) => {
     };
 };
 
+const checkSerialIsFree = async (req, res, next) => {
+    try {
+        const { serial } = req.body
+        const serialCheck = await Bikes.findBy({ serial })
+        if (!serialCheck.serial) {
+            next()
+        } else {
+            next({ status: 400, message: 'Serial already registered' })
+        }
+    } catch (err) {
+        next({ status: 400, message: 'Catch error' })
+    }
+}
+
 module.exports = {
-    validateBody
+    validateBody,
+    checkSerialIsFree
 }
