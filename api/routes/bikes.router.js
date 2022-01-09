@@ -29,7 +29,7 @@ bikesRouter.get('/:serial', (req, res, next) => {
         .catch(next)
 })
 
-bikesRouter.post('/add', mw.checkSerialIsFree, mw.validateBody, (req, res, next) => {
+bikesRouter.post('/add', mw.serialFree, mw.validateBody, (req, res, next) => {
     Bikes.addBike(req.body)
         .then(newBike => {
             res.status(201).json(newBike)

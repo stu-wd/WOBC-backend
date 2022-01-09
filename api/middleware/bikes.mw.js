@@ -9,23 +9,24 @@ const validateBody = async (req, res, next) => {
     } catch (err) {
         next({ status: 422, message: 'Error in the req.body' });
     };
+    console.log('validate')
 };
 
-const checkSerialIsFree = async (req, res, next) => {
+const serialFree = async (req, res, next) => {
+    const { serial } = req.body;
     try {
-        const { serial } = req.body
-        const serialCheck = await Bikes.findBy({ serial })
-        if (!serialCheck.serial) {
+        const checkSerial = await Bikes.findBy({ serial });
+        if (!checkSerial) {
             next()
         } else {
-            next({ status: 400, message: 'Serial already registered' })
+            next({ status: 422, message: 'Serial is taken' });
         }
     } catch (err) {
-        next({ status: 400, message: 'Catch error' })
+        next({ status: 422, message: 'Error in serial free logic'})
     }
-}
+};
 
 module.exports = {
     validateBody,
-    checkSerialIsFree
+    serialFree
 }
