@@ -29,7 +29,7 @@
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
     "restart": "npm run rollback && npm run migrate && npm run seed",
-    "noseedstart": "npm run rollback && npm run migrate",
+    "noseedstart": "npm run rollback && npm run migrate:latest",
     "migrateh": "heroku run knex migrate:latest -a whiteoakbikeco-op",
     "rollbackh": "heroku run knex migrate:rollback -a whiteoakbikeco-op",
     "restarth": "npm run rollbackh && npm run migrateh && npm run seedh",
