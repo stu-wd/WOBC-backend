@@ -2,8 +2,8 @@ exports.up = async (knex) => {
     await knex.schema
         .createTable('Bikes', table => {
             table.increments()
-            table.string('serial')
-            table.string('future')
+            table.string('serial').notNullable().unique()
+            table.string('future').notNullable()
             table.string('condition')
             table.string('type')
             table.string('size')

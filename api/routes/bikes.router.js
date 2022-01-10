@@ -32,13 +32,13 @@ bikesRouter.get('/:serial', (req, res, next) => {
 bikesRouter.post('/add', mw.serialFree, mw.validateBody, (req, res, next) => {
     Bikes.addBike(req.body)
         .then(newBike => {
-            res.status(201).json(newBike)
+            res.status(201).json({newBike, message: 'Success'})
         })
         .catch(next)
 })
 
 bikesRouter.put('/edit', (req, res, next) => {
-    // console.log(req.body)
+    console.log(req.body)
     // revisit to figure out how to change the serial
     const serial = req.body.serial
     const changes = req.body
