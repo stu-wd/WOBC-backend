@@ -4,22 +4,15 @@ exports.seed = function(knex) {
   return knex('users').del()
     .then(function () {
       return knex('users').insert([
-        // {
-        //   username: 'admin',
-        //   password: generators.password('admin')
-        // },
-        // {
-        //   username: 'blake',
-        //   password: generators.password('elrose')
-        // }
         {
           username: 'admin',
-          password: 'admin'
+          password: generators.password('admin')
         },
         {
           username: 'blake',
-          password: 'elrose'
+          password: generators.password('elrose')
         }
+        
       ]);
     });
 };
