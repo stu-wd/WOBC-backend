@@ -3,10 +3,12 @@ const Auth = require('../../data/models/auth.model');
 const generators = require('../../utils/generators');
 const mw = require('../middleware/auth.mw')
 
-authRouter.post('/register', mw.validateBody, mw.usernameFree, (req, res, next) => {
+authRouter.post('/register', mw.validateBody, mw.usernameFree, async (req, res, next) => {
     let user = req.body;
-    const hash = generators.password(user.password);
+    const hash = await generators.password(user.password);
     user.password = hash;
+
+    console.log('user: ', user)
 
     Auth.add(user)
         .then(newUser => {

@@ -10,6 +10,7 @@ const validateBody = async (req, res, next) => {
     } catch (err) {
         next({ status: 422, message: 'Error in req.body' })
     }
+    console.log('validated')
 };
 
 const usernameFree = async (req, res, next) => {
@@ -24,6 +25,7 @@ const usernameFree = async (req, res, next) => {
     } catch (err) {
         next(err)
     }
+    console.log(username)
 };
 
 const usernameExists = async (req, res, next) => {
