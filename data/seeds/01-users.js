@@ -1,6 +1,6 @@
 const generators = require('../../utils/generators');
 
-exports.seed = function(knex) {
+exports.seed = async function(knex) {
   return knex('users').del()
     .then(function () {
       return knex('users').insert([

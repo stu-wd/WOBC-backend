@@ -7,6 +7,9 @@ const password = async (data) => {
     return password
 }
 
+const adminPassword = async () => await password('admin')
+console.log(adminPassword)
+
 const token = (user) => {
     const payload = {
         subject: user.user_id,
