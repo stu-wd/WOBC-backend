@@ -32,23 +32,25 @@ bikesRouter.get('/:serial', (req, res, next) => {
 bikesRouter.post('/add', mw.validateBody, (req, res, next) => {
     Bikes.addBike(req.body)
         .then(newBike => {
-            res.status(201).json({newBike, message: 'Success'})
+            res.status(201).json({newBike, message: 'Add Success'})
         })
-        .catch(() => {
-            res.status(400).json({ message: 'Failed' })
+        .catch((err) => {
+            res.status(400).json({ error: err, message: 'Add Failed' })
         })
 })
 
-bikesRouter.put('/edit', (req, res, next) => {
-    console.log(req.body)
+bikesRouter.put('/:serial', (req, res, next) => {
     // revisit to figure out how to change the serial
-    const serial = req.body.serial
+    const serial = req.params.serial
     const changes = req.body
     Bikes.editBike(serial, changes)
         .then(editedBike => {
-            res.status(200).json(editedBike)
+            console.log(editedBike);
+            res.status(200).json({editedBike, message: 'Edit Success'})
         })
-        .catch(next)
+        .catch((err) => {
+            res.status(400).json({ error: err, message: 'Edit Failed'})
+        })
 })
 
 module.exports = bikesRouter;
