@@ -3,8 +3,10 @@ const bcrypt = require('bcryptjs');
 
 const validateBody = async (req, res, next) => {
     try {
-        const { password, username } = req.body;
-        if ( !password || !username ) {
+        // const { password, username } = req.body;
+        // if ( !password || !username ) {
+        const { name, password, username } = req.body;
+        if ( !name || !password || !username ) {
             next({ status: 400, message: 'Missing name, password, or username'})
         } else next()
     } catch (err) {
