@@ -5,12 +5,16 @@ exports.seed = async function(knex) {
     .then(function () {
       return knex('users').insert([
         {
+          name: 'admin',
           username: 'admin',
-          password: generators.password('admin')
+          password: 'admin'
+          // password: generators.password('admin')
         },
         {
+          name: 'Blake Pierce',
           username: 'blake',
-          password: generators.password('elrose')
+          password: 'elrose'
+          // password: generators.password('elrose')
         }
         
       ]);
