@@ -2,13 +2,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
 const password = async (data) => {
-    const password = await bcrypt.hashSync(data, parseInt(process.env.BCRYPT_ROUNDS) || 8);
+    const password = await bcrypt.hashSync(data, parseInt(process.env.BCRYPT_ROUNDS) || 8)
 
     return password
 }
 
 const adminPassword = async () => await password('admin')
-console.log(adminPassword)
 
 const token = (user) => {
     const payload = {
