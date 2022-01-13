@@ -5,14 +5,22 @@ const validateBody = async (req, res, next) => {
     try {
         // const { password, username } = req.body;
         // if ( !password || !username ) {
+            // if ( !name || !password || !username ) {
+            //     next({ status: 400, message: 'Missing name, password, or username'})
+            // } else next()
         const { name, password, username } = req.body;
-        if ( !name || !password || !username ) {
-            next({ status: 400, message: 'Missing name, password, or username'})
-        } else next()
+        if (!name) {
+            next({ status: 400, message: 'Name required' })
+        } else if (!password) {
+            next({ status: 400, message: 'Password required' })
+        } else if (!username) {
+            next({ status: 400, message: 'Username required' })
+        } else {
+            next()
+        }
     } catch (err) {
-        next({ status: 422, message: 'Error in req.body' })
+        next({ status: 422, message: 'Body Validation Error' })
     }
-    console.log('validated')
 };
 
 const usernameFree = async (req, res, next) => {
@@ -22,12 +30,11 @@ const usernameFree = async (req, res, next) => {
         if (!checkUsername) {
             next()
         } else {
-            next({ status: 422, message: 'Username is taken' });
+            next({ status: 422, message: 'Username already taken' });
         }
     } catch (err) {
-        next(err)
+        next({ status: 422, message: 'Username creation conflict' })
     }
-    console.log(username)
 };
 
 const usernameExists = async (req, res, next) => {
@@ -40,7 +47,7 @@ const usernameExists = async (req, res, next) => {
             next({ status: 422, message: 'Username not found' });
         }
     } catch (err) {
-        next(err)
+        next({ status: 422, message: 'Username search conflict' })
     }
 };
 
@@ -52,10 +59,10 @@ const checksPassword = async (req, res, next) => {
                 req.body = returnedUser
                 next()
             } else {
-                next({ status: 401, message: 'Wrong password' })
+                next({ status: 401, message: 'Incorrect password' })
             }
         })
-        .catch(next)
+        .catch({ status: 401, message: 'Password flow error' })
 }
 
 module.exports = {

@@ -8,24 +8,18 @@ authRouter.post('/register', mw.validateBody, mw.usernameFree, async (req, res, 
     const hash = await generators.password(user.password);
     user.password = hash;
 
-    console.log('user: ', user)
-
     Auth.add(user)
         .then(newUser => {
-            const hammeredUserObj = {
-                username: newUser[0].username,
-                user_id: newUser[0].user_id
-            };
-            res.status(201).json(hammeredUserObj)
+            res.status(201).json({ registered: newUser[0].username, message: 'Registration Success' })
         })
-        .catch(err => next(err))
+        .catch(err => next({ status: 422, message: 'Registration Error' }))
 });
 
 authRouter.post('/login', mw.usernameExists, mw.checksPassword, (req, res) => {
     const { user_id, username } = req.body;
     const token = generators.token(req.body);
     res.status(200).json({
-        message: `Welcome back, ${username}`,
+        message: `Login Success`,
         token,
         user: {
             user_id: user_id,
