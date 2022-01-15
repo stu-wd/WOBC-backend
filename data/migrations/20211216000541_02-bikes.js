@@ -4,11 +4,11 @@ exports.up = async (knex) => {
     table.string("serial").notNullable().unique();
     table.string("status").notNullable();
     table.string("condition");
-    table.string("type");
+    table.string("style");
     table.string("size");
     table.string("brand");
     table.string("gender");
-    table.string("kidadult");
+    table.string("adultchild");
     table.string("received");
     table.string("storage");
     table.integer("user_id");
