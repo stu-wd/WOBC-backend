@@ -1,25 +1,31 @@
-const db = require('../db.config');
+const db = require("../db.config");
 
 const getBikes = () => {
-    return db('Bikes')
+  return db("Bikes");
 };
 
 const findBy = (filter) => {
-    const result = db('Bikes').where(filter)
-    return result
-}
+  const result = db("Bikes").where(filter);
+  return result;
+};
 
 const addBike = async (bike) => {
-    return db('Bikes').insert(bike).returning('*')
-}
+  return db("Bikes").insert(bike).returning("*");
+};
 
 const editBike = async (serial, changes) => {
-    return db('Bikes').where('serial', serial).update(changes).returning('*')
-}
+  return db("Bikes").where("serial", serial).update(changes).returning("*");
+};
+
+const deleteBike = async (serial) => {
+  const attempt = await db("Bikes").where("serial", serial).del();
+  return;
+};
 
 module.exports = {
-    getBikes,
-    findBy,
-    addBike,
-    editBike
-}
+  getBikes,
+  findBy,
+  addBike,
+  editBike,
+  deleteBike,
+};

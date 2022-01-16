@@ -18,10 +18,10 @@ const serialFree = async (req, res, next) => {
   const { serial } = req.body;
   try {
     const checkSerial = await Bikes.findBy({ serial });
-    if (!checkSerial.serial) {
-      next();
-    } else {
+    if (checkSerial.length > 0) {
       next({ status: 422, message: "Serial is taken" });
+    } else {
+      next();
     }
   } catch (err) {
     next({ status: 422, message: "Error in serial free logic" });
