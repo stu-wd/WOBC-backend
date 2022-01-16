@@ -1,8 +1,8 @@
 const generators = require("../../utils/generators");
 
 exports.seed = async function (knex) {
-  const pw1 = await generators.password("admin");
-  const pw2 = await generators.password("elrose");
+  const pw1 = await generators.password(process.env.ADMIN_PW);
+  const pw2 = await generators.password(process.env.BLAKE_PW);
   return knex("users")
     .del()
     .then(function () {
