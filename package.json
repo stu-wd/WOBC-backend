@@ -32,7 +32,7 @@
     "noseedstart": "npm run rollback && npm run migrate:latest",
     "migrateheroku": "heroku run knex migrate:latest -a whiteoakbikeco-op",
     "rollbackheroku": "heroku run knex migrate:rollback -a whiteoakbikeco-op",
-    "restartheroku": "npm run rollbackh && npm run migrateh && npm run seedheroku",
+    "restartheroku": "npm run rollbackheroku && npm run migrateheroku && npm run seedheroku",
     "databaseheroku": "heroku pg:psql -a whiteoakbikeco-op",
     "seedheroku": "heroku run knex seed:run -a whiteoakbikeco-op",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
