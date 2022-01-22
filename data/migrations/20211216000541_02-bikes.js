@@ -11,6 +11,7 @@ exports.up = async (knex) => {
     table.string("adultchild");
     table.string("received");
     table.string("storage");
+    table.string("wobc_id");
     table.integer("user_id");
     table
       .foreign("user_id")

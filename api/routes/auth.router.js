@@ -14,12 +14,10 @@ authRouter.post(
 
     Auth.add(user)
       .then((newUser) => {
-        res
-          .status(201)
-          .json({
-            registered: newUser[0].username,
-            message: "Registration Success",
-          });
+        res.status(201).json({
+          registered: newUser[0].username,
+          message: "Registration Success",
+        });
       })
       .catch((err) =>
         next({

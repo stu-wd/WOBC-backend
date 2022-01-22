@@ -14,6 +14,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "East Ridge",
           storage: "Dodds",
+          wobc_id: "",
           user_id: 2,
         },
         {
@@ -27,6 +28,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "Becaffeinated",
           storage: "Lookouts",
+          wobc_id: "",
           user_id: 2,
         },
         {
@@ -40,6 +42,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "East Ridge",
           storage: "Red Bank",
+          wobc_id: "",
         },
         {
           serial: "TEST4",
@@ -52,6 +55,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "Pedego",
           storage: "Dodds",
+          wobc_id: "",
         },
         {
           serial: "TEST5",
@@ -64,6 +68,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "Hamilton Co. Recyclying",
           storage: "Red Bank",
+          wobc_id: "",
         },
         {
           serial: "TEST6",
@@ -76,6 +81,7 @@ exports.seed = function (knex) {
           adultchild: "Adult",
           received: "Becaffeinated",
           storage: "Lookouts",
+          wobc_id: "",
         },
       ]);
     });
