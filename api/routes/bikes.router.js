@@ -10,9 +10,8 @@ bikesRouter.get("/", (req, res, next) => {
     .catch(next);
 });
 
-bikesRouter.get("/filter", (req, res, next) => {
-  // const options = req.params
-  // console.log(req.body)
+bikesRouter.post("/filter", (req, res, next) => {
+  console.log(req.body);
   Bikes.findBy(req.body)
     .then((results) => {
       res.status(200).json(results);

@@ -5,6 +5,7 @@ const getBikes = () => {
 };
 
 const findBy = (filter) => {
+  console.log("filter: ", filter);
   const result = db("Bikes").where(filter);
   return result;
 };
