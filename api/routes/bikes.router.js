@@ -66,4 +66,60 @@ bikesRouter.delete("/:serial", (req, res, next) => {
     });
 });
 
+bikesRouter.get("/form/status", (req, res, next) => {
+  Bikes.getAllStatuses()
+    .then((resp) => {
+      res.status(200).json(resp);
+    })
+    .catch(next);
+});
+
+bikesRouter.get("/form/size", (req, res, next) => {
+  Bikes.getAllSizes()
+    .then((resp) => {
+      res.status(200).json(resp);
+    })
+    .catch(next);
+});
+
+bikesRouter.get("/form/style", (req, res, next) => {
+  Bikes.getAllStyles()
+    .then((resp) => {
+      res.status(200).json(resp);
+    })
+    .catch(next);
+});
+
+bikesRouter.get("/form/received", (req, res, next) => {
+  Bikes.getAllReceiveds()
+    .then((resp) => {
+      res.status(200).json(resp);
+    })
+    .catch(next);
+});
+
+bikesRouter.get("/form/storage", (req, res, next) => {
+  Bikes.getAllStorages()
+    .then((resp) => {
+      res.status(200).json(resp);
+    })
+    .catch(next);
+});
+
+bikesRouter.get("/form/refresh", async (req, res, next) => {
+  const statuses = await Bikes.getAllStatuses();
+  const sizes = await Bikes.getAllSizes();
+  const receiveds = await Bikes.getAllReceiveds();
+  const styles = await Bikes.getAllStyles();
+  const storage = await Bikes.getAllStorages();
+
+  res.status(200).json({
+    status: statuses,
+    size: sizes,
+    received: receiveds,
+    style: styles,
+    storage: storage,
+  });
+});
+
 module.exports = bikesRouter;
