@@ -1,3 +1,4 @@
+const bikesRouter = require("../../api/routes/bikes.router");
 const db = require("../db.config");
 
 const getBikes = () => {
@@ -6,6 +7,10 @@ const getBikes = () => {
 
 const getAllStatuses = () => {
   return db("Bikes").distinct().pluck("status");
+};
+
+const getAllBrands = () => {
+  return db("Bikes").distinct().pluck("brand");
 };
 
 const getAllStyles = async () => {
@@ -57,7 +62,42 @@ const getAllStorages = async () => {
 };
 
 const findBy = (filter) => {
-  const result = db("Bikes").where(filter);
+  return db("Bikes").where(filter);
+};
+
+const filterBy = async (filters) => {
+  const allStatuses = await db("Bikes").distinct().pluck("status");
+  const allBrands = await db("Bikes").distinct().pluck("brand");
+  const allStyles = await db("Bikes").distinct().pluck("style");
+  const allGenders = await db("Bikes").distinct().pluck("gender");
+  const allAdultchildren = await db("Bikes").distinct().pluck("adultchild");
+  const allSizes = await db("Bikes").distinct().pluck("size");
+  const allReceiveds = await db("Bikes").distinct().pluck("received");
+  const allStorages = await db("Bikes").distinct().pluck("storage");
+
+  const filteredOptions = {
+    status: filters.status.length > 0 ? filters.status : allStatuses,
+    brand: filters.brand.length > 0 ? filters.brand : allBrands,
+    style: filters.style.length > 0 ? filters.style : allStyles,
+    gender: filters.gender.length > 0 ? filters.gender : allGenders,
+    adultchild:
+      filters.adultchild.length > 0 ? filters.adultchild : allAdultchildren,
+    size: filters.size.length > 0 ? filters.size : allSizes,
+    received: filters.received.length > 0 ? filters.received : allReceiveds,
+    storage: filters.storage.length > 0 ? filters.storage : allStorages,
+  };
+
+  const result = await db("Bikes")
+    .whereIn("status", filteredOptions.status)
+    .whereIn("brand", filteredOptions.brand)
+    .whereIn("style", filteredOptions.style)
+    .whereIn("gender", filteredOptions.gender)
+    .whereIn("adultchild", filteredOptions.adultchild)
+    .whereIn("size", filteredOptions.size)
+    .whereIn("storage", filteredOptions.storage)
+    .whereIn("received", filteredOptions.received);
+  console.log("result", result);
+
   return result;
 };
 
@@ -85,4 +125,5 @@ module.exports = {
   getAllReceiveds,
   getAllStorages,
   getAllStyles,
+  filterBy,
 };

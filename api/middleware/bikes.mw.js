@@ -28,6 +28,11 @@ const serialFree = async (req, res, next) => {
   }
 };
 
+// const fineTuneFilters = async (req, res, next) => {
+//   console.log("FINETUNEFILTER: ", req.body);
+//   next();
+// };
+
 module.exports = {
   validateBody,
   serialFree,
