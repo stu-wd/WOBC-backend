@@ -96,7 +96,6 @@ const filterBy = async (filters) => {
     .whereIn("size", filteredOptions.size)
     .whereIn("storage", filteredOptions.storage)
     .whereIn("received", filteredOptions.received);
-  console.log("result", result);
 
   return result;
 };
